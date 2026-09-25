@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   CLAY — warm, minimal, playful
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  color-scheme: light;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  background: #faf9f7;  /* cream */
+  color: #0a0a0a;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #0a0a0a;
+  color: #faf9f7;
+}
+
+/* ============================================
+   Dashboard / login / legal surface — now Clay light
+   (class kept as no-op for backward compat)
+   ============================================ */
+.dark-surface {
+  background: #faf9f7;
+  color: #0a0a0a;
+}
+
+/* ============================================
+   CLAY SHADOW SYSTEM
+   Multi-layer: downward cast + inset highlight + subtle edge.
+   Feels "pressed into clay" — raised yet embedded.
+   ============================================ */
+.shadow-clay {
+  box-shadow:
+    0 1px 1px rgba(0,0,0,0.10),
+    inset 0 -1px 1px rgba(0,0,0,0.04),
+    0 -0.5px 1px rgba(0,0,0,0.05);
+}
+
+/* Hard-offset "print-era" shadow for playful hover states */
+.shadow-clay-hard {
+  box-shadow: -7px 7px 0 rgba(0,0,0,1);
+}
+
+/* ============================================
+   PLAYFUL HOVER — Clay's signature interaction
+   Rotate -8deg + translateY up + hard offset shadow.
+   Opt in via `.clay-hover` on any button/card.
+   ============================================ */
+.clay-hover {
+  transition: transform 200ms cubic-bezier(.34,1.56,.64,1),
+              box-shadow 200ms ease-out,
+              background-color 200ms ease-out,
+              color 200ms ease-out;
+  transform: rotate(0deg) translateY(0);
+  will-change: transform;
+}
+.clay-hover:hover {
+  transform: rotate(-2.5deg) translateY(-3px);
+  box-shadow: -5px 5px 0 rgba(0,0,0,1);
+}
+.clay-hover:active {
+  transform: rotate(0deg) translateY(0);
+  box-shadow: -2px 2px 0 rgba(0,0,0,1);
+  transition-duration: 80ms;
+}
+
+/* Stronger variant for primary CTA */
+.clay-hover-bold:hover {
+  transform: rotate(-4deg) translateY(-4px);
+  box-shadow: -7px 7px 0 rgba(0,0,0,1);
+}
+
+/* Respect reduced-motion preferences: drop the rotation */
+@media (prefers-reduced-motion: reduce) {
+  .clay-hover, .clay-hover-bold { transition: none; }
+  .clay-hover:hover, .clay-hover-bold:hover {
+    transform: none;
+    box-shadow: 0 1px 1px rgba(0,0,0,.10);
+  }
+}
+
+/* ============================================
+   BORDERS — mix of solid oat + dashed oat for texture
+   ============================================ */
+.border-oat    { border-color: #dad4c8; }
+.border-oat-50 { border-color: #eee9df; }
+.border-dashed-oat {
+  border: 1px dashed #dad4c8;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.font-logo {
+  font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  font-style: italic;
+}
+
+.tracking-display { letter-spacing: -0.035em; }
+.tracking-hero    { letter-spacing: -0.045em; }
+
+/* Clay uppercase label — 12px, 600, 1.08px tracking */
+.label-clay {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.08px;
+  line-height: 1.2;
+}
+
+/* ============================================
+   Small atmospheric animations
+   ============================================ */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(7,138,82,0.35); }  /* matcha */
+  50%      { opacity: 0.75; box-shadow: 0 0 0 6px rgba(7,138,82,0); }
+}
+
+/* ──────────────────────────────────────────────
+   Italic headline "chromatic breath"
+
+   Uses @property so the browser knows the custom
+   property is a <color> and can interpolate it
+   smoothly (default string-typed custom properties
+   can't be animated — they only swap). The italic
+   word group inhales between matcha-800 and
+   matcha-600 on a slow 10-second cycle, so the
+   typography feels quietly alive without ever
+   pulling focus from the content.
+   ────────────────────────────────────────────── */
+@property --headline-ink {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #02492a;   /* matcha-800 */
+}
+
+@keyframes headline-breathe {
+  0%, 100% { --headline-ink: #02492a; }   /* matcha-800 deep green */
+  50%      { --headline-ink: #078a52; }   /* matcha-600 brighter green */
+}
+
+.chromatic-breath {
+  color: var(--headline-ink);
+  animation: headline-breathe 10s ease-in-out infinite;
+  /* Give the breath a generous warm-up so it doesn't start racing the
+     headline's entrance stagger. The delay matches the end of that stagger. */
+  animation-delay: 1.4s;
+  will-change: color;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chromatic-breath { animation: none; }
+}
+
+/* ============================================
+   CODE SYNTAX (used on dark code block, terminal)
+   ============================================ */
+.syn-kw  { color: #A78BFA; }
+.syn-str { color: #84e7a5; }  /* matcha-300 */
+.syn-cm  { color: #9f9b93; }
+.syn-fn  { color: #3bd3fd; }  /* slushie-500 */
+.syn-var { color: #fbbd41; }  /* lemon-500 */
+.syn-op  { color: #7A839B; }
+
+.code-dark {
+  background: #0a0a0a;
+  color: #e8e8e8;
+}
+
+/* ============================================
+   Reduced motion safety
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 768px) {
+  html, body { overflow-x: hidden; max-width: 100vw; }
+  button, a, input, select, textarea { min-height: 40px; }
+  pre { overflow-x: auto; -webkit-overflow-scrolling: touch; font-size: 0.78rem; }
+}
+
+@supports (padding: env(safe-area-inset-bottom)) {
+  body { padding-bottom: env(safe-area-inset-bottom); }
+}

@@ -1,0 +1,84 @@
+# Gathos — robots.txt
+# Goal: maximum visibility across Google, Bing, and every major AI search
+# engine (ChatGPT, Claude, Perplexity, Gemini). Only training-only bots are
+# throttled; anything that powers live citations is explicitly welcome.
+
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /api/
+Disallow: /login
+Disallow: /auth/
+
+# ── Traditional search (explicitly welcomed) ───────────────────────────────
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# ── AI search & answer engines (explicitly welcomed) ───────────────────────
+# These bots fuel live citations in ChatGPT web search, Google AI Overviews,
+# Claude web browsing, Perplexity, Bing Copilot, and Gemini. Keep them open.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# ── Training corpora crawlers (allowed) ────────────────────────────────────
+# Common Crawl fuels many LLM training sets; Bytespider powers TikTok/Douyin
+# AI features. Allowing them matches the server-side access policy and
+# maximises the odds of Gathos appearing in future model context.
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# ── Sitemaps ───────────────────────────────────────────────────────────────
+Sitemap: https://gathos.com/sitemap.xml
