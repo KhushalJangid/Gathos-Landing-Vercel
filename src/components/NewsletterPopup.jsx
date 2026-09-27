@@ -58,7 +58,7 @@ export default function NewsletterPopup() {
         body: JSON.stringify({ email, source: 'popup' }),
       })
       const data = await res.json()
-      if (!res.ok) {
+      if (!res.ok || data.ok !== true) {
         setErrMsg(data.error || 'Something went wrong.')
         setStatus('error')
         return

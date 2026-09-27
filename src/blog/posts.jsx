@@ -2772,7 +2772,7 @@ const DEFAULT_AUTHOR = {
   name: 'The Gathos team',
   title: 'API platform for AI agents',
   url: 'https://gathos.com',
-  image: 'https://gathos.com/icon-512.png',
+  image: 'https://assets.vividai.in/icon-512.png',
   twitter: '@Gathos_',
 }
 

@@ -1,3 +1,4 @@
+import { assetUrl } from '../lib/assets.js'
 import { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
@@ -76,7 +77,7 @@ function ResultPanel() {
       <div className="relative overflow-hidden rounded-[18px] border border-white/10 bg-black aspect-[16/9]">
         <img
           className="absolute inset-0 h-full w-full object-cover"
-          src="/showcase/video/product-demo-creator-video-poster.jpg"
+          src={assetUrl('/showcase/video/product-demo-creator-video-poster.jpg')}
           alt="Creator video result preview"
           loading="lazy"
           decoding="async"

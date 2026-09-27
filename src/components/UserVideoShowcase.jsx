@@ -1,13 +1,9 @@
+import { usecaseAsset } from '../lib/assets.js'
 import { useState } from 'react'
 import SectionHeader from './SectionHeader'
 import RevealOnScroll from './RevealOnScroll'
 
-const SHOWCASE_CDN_BASE = (import.meta.env.VITE_SHOWCASE_CDN_BASE_URL || '').replace(/\/+$/, '')
 
-function usecaseAsset(assetPath) {
-  const clean = String(assetPath || '').replace(/^\/+/, '').replace(/^showcase\/usecases\//, '')
-  return SHOWCASE_CDN_BASE ? SHOWCASE_CDN_BASE + '/' + clean : '/showcase/usecases/' + clean
-}
 
 const VIDEOS = [
   {

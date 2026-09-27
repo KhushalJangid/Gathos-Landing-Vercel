@@ -51,7 +51,7 @@ export function removeJsonLd(id) {
 
 // Convenience: set the full meta suite (title, description, OG, Twitter,
 // canonical) for a page. Returns nothing. Safe to call on every mount.
-export function setPageMeta({ title, description, url, image = 'https://gathos.com/og-image.png', type = 'website' }) {
+export function setPageMeta({ title, description, url, image = 'https://assets.vividai.in/og-image.png', type = 'website' }) {
   document.title = stripTags(title)
   setMeta('description', description)
   setMeta('og:title', stripTags(title), true)
@@ -111,7 +111,7 @@ export function softwareApplicationLd({ name = 'Gathos', description, url = 'htt
       '@type': 'Organization',
       name: 'Gathos',
       url: 'https://gathos.com',
-      logo: 'https://gathos.com/icon-512.png',
+      logo: 'https://assets.vividai.in/icon-512.png',
     },
   }
 }
@@ -153,9 +153,9 @@ export function articleLd({ title, description, url, datePublished, dateModified
     publisher: {
       '@type': 'Organization',
       name: 'Gathos',
-      logo: { '@type': 'ImageObject', url: 'https://gathos.com/icon-512.png' },
+      logo: { '@type': 'ImageObject', url: 'https://assets.vividai.in/icon-512.png' },
     },
-    image: 'https://gathos.com/og-image.png',
+    image: 'https://assets.vividai.in/og-image.png',
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
   }
 }

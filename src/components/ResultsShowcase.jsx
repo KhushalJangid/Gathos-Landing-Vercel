@@ -1,3 +1,4 @@
+import { assetUrl } from '../lib/assets.js'
 import { useRef, useState, useEffect } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
@@ -78,7 +79,7 @@ function ImageTile({ item }) {
     >
       {showImage ? (
         <img
-          src={item.src}
+          src={assetUrl(item.src)}
           alt={item.prompt}
           loading="lazy"
           decoding="async"
@@ -256,7 +257,7 @@ function VoiceCard({ item, isActive, onActivate, onPlayChange }) {
         {item.ready && (
           <audio
             ref={audioRef}
-            src={item.src}
+            src={assetUrl(item.src)}
             onPlay={() => { setPlaying(true); onPlayChange?.(true) }}
             onPause={() => { setPlaying(false); onPlayChange?.(false) }}
             onEnded={() => { setPlaying(false); onPlayChange?.(false) }}
@@ -345,8 +346,8 @@ function VideoTile({ item, isAudible, onRequestAudio, panelActive }) {
       {showVideo ? (
         <video
           ref={videoRef}
-          src={item.src}
-          poster={item.poster || '/showcase/video/product-demo-creator-video-poster.jpg'}
+          src={assetUrl(item.src)}
+          poster={assetUrl(item.poster || '/showcase/video/product-demo-creator-video-poster.jpg')}
           autoPlay={false}
           muted
           loop
@@ -443,7 +444,7 @@ function TextToImageMarqueeCard({ item }) {
     <article className="w-[270px] shrink-0 rounded-[24px] border border-black/10 bg-white p-3 shadow-[0_18px_42px_-34px_rgba(0,0,0,0.55)] md:w-[340px]">
       <div className="relative h-[190px] overflow-hidden rounded-[18px] bg-cream md:h-[230px]">
         <img
-          src={item.src}
+          src={assetUrl(item.src)}
           alt={item.prompt}
           loading="eager"
           decoding="async"

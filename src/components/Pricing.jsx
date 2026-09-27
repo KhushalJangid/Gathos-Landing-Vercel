@@ -16,13 +16,13 @@ function BusinessCard() {
     setStatus('sending')
     setError('')
     try {
-      const res = await publicFetch('/api/contact', {
+      const res = await publicFetch('/api/contact/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       })
       const data = await res.json().catch(() => ({}))
-      if (!res.ok) { setStatus('error'); setError(data.error || 'Could not send.'); return }
+      if (!res.ok || data.ok !== true) { setStatus('error'); setError(data.error || 'Could not send.'); return }
       setStatus('sent')
       setForm({ name: '', email: '', company: '', message: '', website: '' })
     } catch {

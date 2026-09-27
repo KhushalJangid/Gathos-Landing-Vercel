@@ -37,6 +37,34 @@ and allow the landing origin in backend CORS. The Vite proxy is development-only
 For an up-to-date sitemap including generated content, proxy `/sitemap.xml` to the
 backend; a static sitemap is included as a fallback.
 
-`VITE_SHOWCASE_CDN_BASE_URL` optionally serves showcase media from a CDN. Local
-assets are bundled in `public/showcase` by default. The original `gathos` project
-remains available during migration; deploy this directory for the public site.
+Public images, posters, audio, and videos use `https://assets.vividai.in` by
+default, preserving paths such as `/showcase/usecases/videos/final_podcast.mp4`.
+The hero deck, use-case cards, results gallery, logos, favicons, and social preview
+images all use this host. No R2 credentials are exposed to the frontend.
+`VITE_ASSET_BASE_URL` optionally overrides the runtime media base at build time;
+static favicon, manifest icon, and social-preview URLs use the production host.
+The manifest, service worker, and application bundles remain on the site origin.
+
+## Public forms and affiliates
+
+- Newsletter: `POST /api/newsletter/subscribe` saves the address through the
+  backend's audience service in the `newsletter` program. This endpoint captures
+  subscriptions; it does not itself send a newsletter.
+- Business enquiry: `POST /api/contact/` validates the message and emails
+  `CONTACT_INBOX` (default `hello@gathos.com`) with the sender as Reply-To.
+  The backend needs working SMTP settings. This endpoint does not store an enquiry
+  record or start checkout.
+- Affiliates: the partner CTA links to `https://affiliate.gathos.com`, which must
+  be hosted separately. This landing project does not include the affiliate portal
+  or capture `?ref=` attribution. The backend has affiliate endpoints and reads a
+  `gathos_ref` cookie during signup, but cross-domain referral handoff to
+  `dashboard.gathos.live` is not implemented here. A cookie on `gathos.com` cannot
+  provide that handoff to `gathos.live`.
+
+The forms require the production API routing described above; deploying only the
+static files does not deploy these services. Both forms require an explicit
+`{ "ok": true }` backend response before displaying success.
+
+`npm run check:assets` inventories the showcase media. CDN files do not need to
+exist locally; remote availability is checked separately from the build. The old
+`VITE_SHOWCASE_CDN_BASE_URL` setting is no longer used.

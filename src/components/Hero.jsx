@@ -1,3 +1,4 @@
+import { assetUrl, usecaseAsset } from '../lib/assets.js'
 import { useRef, useState, useEffect } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
@@ -66,12 +67,7 @@ const AGENT_ROWS = [
 ]
 
 const EDGE_FADE = 'linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent)'
-const SHOWCASE_CDN_BASE = (import.meta.env.VITE_SHOWCASE_CDN_BASE_URL || '').replace(/\/+$/, '')
 
-function usecaseAsset(assetPath) {
-  const clean = String(assetPath || '').replace(/^\/+/, '').replace(/^showcase\/usecases\//, '')
-  return SHOWCASE_CDN_BASE ? SHOWCASE_CDN_BASE + '/' + clean : '/showcase/usecases/' + clean
-}
 
 
 const HERO_MODES = [
@@ -138,7 +134,7 @@ function AgentLogoPill({ agent, tone = 'light' }) {
       <span className="flex h-7 min-w-7 shrink-0 items-center justify-center text-[1.05rem] font-extrabold leading-none md:text-[1.22rem]" style={{ color: markColor }}>
         {agent.img ? (
           <img
-            src={agent.img}
+            src={assetUrl(agent.img)}
             alt=""
             aria-hidden="true"
             className={`h-6 w-6 object-contain ${dark ? 'invert' : ''}`}
@@ -317,7 +313,7 @@ function ProductPreview({ mode }) {
     return (
       <div className="relative min-h-[390px] overflow-hidden rounded-[26px] border-2 border-black bg-black shadow-[0_18px_50px_-34px_rgba(0,0,0,0.45)]">
         <img
-          src="/showcase/video/product-demo-creator-video-poster.jpg"
+          src={assetUrl('/showcase/video/product-demo-creator-video-poster.jpg')}
           alt="Creator video preview poster"
           loading="lazy"
           decoding="async"
@@ -353,7 +349,7 @@ function ProductPreview({ mode }) {
     <div className="grid min-h-[390px] gap-4 rounded-[26px] border-2 border-black bg-white p-4 text-left shadow-[0_18px_50px_-34px_rgba(0,0,0,0.45)] sm:grid-cols-[1fr_0.78fr]">
       <div className="relative overflow-hidden rounded-[20px] bg-black">
         <img
-          src="/showcase/images/gathos-t2i-luxury-serum-square.webp"
+          src={assetUrl('/showcase/images/gathos-t2i-luxury-serum-square.webp')}
           alt="Text-to-image luxury skincare product campaign generated with Gathos"
           loading="eager"
           decoding="async"

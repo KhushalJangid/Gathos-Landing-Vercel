@@ -1,5 +1,5 @@
-const CACHE_NAME = 'gathos-landing-v1'
-const STATIC_ASSETS = ['/', '/favicon.ico?v=4', '/favicon.svg?v=4', '/manifest.json']
+const CACHE_NAME = 'gathos-landing-v2'
+const STATIC_ASSETS = ['/', '/manifest.json']
 
 self.addEventListener('install', (e) => {
   e.waitUntil(

@@ -1,3 +1,4 @@
+import { assetUrl } from '../lib/assets.js'
 import { publicFetch } from '../lib/public-api.js'
 import { useEffect, useMemo, useState } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
@@ -141,7 +142,7 @@ export default function BlogPost() {
             <div className="flex items-center gap-2.5 mt-6 text-[0.82rem] text-warm-charcoal">
               {post.author.image && (
                 <img
-                  src={post.author.image}
+                  src={assetUrl(post.author.image)}
                   alt={`${post.author.name} avatar`}
                   width="28"
                   height="28"
@@ -261,9 +262,9 @@ function setArticleJsonLd(post) {
     publisher: {
       '@type': 'Organization',
       name: 'Gathos',
-      logo: { '@type': 'ImageObject', url: 'https://gathos.com/icon-512.png' },
+      logo: { '@type': 'ImageObject', url: 'https://assets.vividai.in/icon-512.png' },
     },
-    image: 'https://gathos.com/og-image.png',
+    image: 'https://assets.vividai.in/og-image.png',
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://gathos.com/blog/${post.slug}` },
     keywords: post.keywords || post.eyebrow,
   }

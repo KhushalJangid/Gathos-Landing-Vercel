@@ -1,3 +1,4 @@
+import { assetUrl } from '../lib/assets.js'
 import { useRef, useState, useEffect } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
@@ -66,10 +67,10 @@ const PROMPT = [
 // downloaded to /public/icons/. Rendering via <img> avoids SVG path
 // malformation when pasting long path data into JSX.
 const Icons = {
-  chatgpt:    <img src="/icons/openai.svg"       alt="ChatGPT logo"       width="18" height="18" className="w-[18px] h-[18px]" />,
-  claude:     <img src="/icons/claude.svg"       alt="Claude logo"        width="18" height="18" className="w-[18px] h-[18px]" />,
-  perplexity: <img src="/icons/perplexity.svg"   alt="Perplexity logo"    width="18" height="18" className="w-[18px] h-[18px]" />,
-  gemini:     <img src="/icons/googlegemini.svg" alt="Google Gemini logo" width="18" height="18" className="w-[18px] h-[18px]" />,
+  chatgpt:    <img src={assetUrl('/icons/openai.svg')}       alt="ChatGPT logo"       width="18" height="18" className="w-[18px] h-[18px]" />,
+  claude:     <img src={assetUrl('/icons/claude.svg')}       alt="Claude logo"        width="18" height="18" className="w-[18px] h-[18px]" />,
+  perplexity: <img src={assetUrl('/icons/perplexity.svg')}   alt="Perplexity logo"    width="18" height="18" className="w-[18px] h-[18px]" />,
+  gemini:     <img src={assetUrl('/icons/googlegemini.svg')} alt="Google Gemini logo" width="18" height="18" className="w-[18px] h-[18px]" />,
 }
 
 const engines = [
