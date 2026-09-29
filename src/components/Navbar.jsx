@@ -1,10 +1,11 @@
+import { DASHBOARD_URL } from '../lib/urls.js'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import Button from './Button'
 
 const links = [
   { label: 'APIs', id: 'apis' },
-  { label: 'Docs', href: 'https://dashboard.gathos.live/docs/' },
+  { label: 'Docs', href: (DASHBOARD_URL + "/docs/") },
   { label: 'Use Cases', href: '/industry' },
   { label: 'Skills', id: 'skills' },
   { label: 'Compare', id: 'compare' },
@@ -72,10 +73,10 @@ export default function Navbar() {
           ))}
 
           <div className="flex items-center gap-3">
-              <a href="https://dashboard.gathos.live/login/" className="text-[0.92rem] text-warm-charcoal hover:text-black transition-colors font-medium">
+              <a href={(DASHBOARD_URL + "/login/")} className="text-[0.92rem] text-warm-charcoal hover:text-black transition-colors font-medium">
                 Sign in
               </a>
-              <Button href="https://dashboard.gathos.live/login/" size="sm">
+              <Button href={(DASHBOARD_URL + "/login/")} size="sm">
                 Start free
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
               </Button>
@@ -114,8 +115,8 @@ export default function Navbar() {
                 </a>
               ))}
               <div className="flex items-center gap-2 pt-3 mt-2 border-t border-oat-50">
-                <a href="https://dashboard.gathos.live/login/" className="py-2.5 text-warm-charcoal hover:text-black">Sign in</a>
-                <Button href="https://dashboard.gathos.live/login/" size="sm" className="ml-auto">
+                <a href={(DASHBOARD_URL + "/login/")} className="py-2.5 text-warm-charcoal hover:text-black">Sign in</a>
+                <Button href={(DASHBOARD_URL + "/login/")} size="sm" className="ml-auto">
                   Start free
                 </Button>
               </div>

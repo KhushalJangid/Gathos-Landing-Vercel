@@ -1,3 +1,4 @@
+import { DASHBOARD_URL, SITE_URL } from '../../lib/urls.js'
 import { useEffect } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import Navbar from '../../components/Navbar'
@@ -16,15 +17,15 @@ import { getSkill } from '../skills/data.js'
 export default function AgentPage() {
   const { slug } = useParams()
   const page = getAgent(slug)
-  const url = page ? `https://gathos.com/for/${page.slug}` : ''
+  const url = page ? `${SITE_URL}/for/${page.slug}` : ''
 
   useEffect(() => {
     if (!page) return
     setPageMeta({ title: page.metaTitle, description: page.metaDesc, url })
     setJsonLd('gathos-agent-app-ld', softwareApplicationLd({ description: page.metaDesc, url }))
     setJsonLd('gathos-agent-bc-ld', breadcrumbLd([
-      { name: 'Home', url: 'https://gathos.com' },
-      { name: 'For', url: 'https://gathos.com/for' },
+      { name: 'Home', url: (SITE_URL) },
+      { name: 'For', url: (SITE_URL + "/for") },
       { name: page.agentName, url },
     ]))
     if (page.faqs?.length) setJsonLd('gathos-agent-faq-ld', faqLd(page.faqs))
@@ -61,7 +62,7 @@ export default function AgentPage() {
 
           <div className="mt-7 flex items-center gap-3 flex-wrap">
             <a
-              href="https://dashboard.gathos.live/login/"
+              href={(DASHBOARD_URL + "/login/")}
               className="inline-flex items-center gap-1.5 h-11 px-6 rounded-pill bg-lavender text-black border-2 border-black/90 font-semibold clay-hover clay-hover-bold"
             >
               Start free
@@ -222,7 +223,7 @@ export default function AgentPage() {
           </h2>
           <div className="flex items-center justify-center gap-3 flex-wrap">
             <a
-              href="https://dashboard.gathos.live/login/"
+              href={(DASHBOARD_URL + "/login/")}
               className="inline-flex items-center gap-1.5 h-11 px-6 rounded-pill bg-lavender text-black border-2 border-black/90 font-semibold clay-hover clay-hover-bold"
             >
               Start 7-day free trial

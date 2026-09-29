@@ -1,3 +1,4 @@
+import { DASHBOARD_URL, SITE_URL } from '../../lib/urls.js'
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../../components/Navbar'
@@ -44,7 +45,7 @@ function fmtInt(n) {
 }
 
 export default function SavingsCalculator() {
-  const url = 'https://gathos.com/tools/savings-calculator'
+  const url = (SITE_URL + "/tools/savings-calculator")
   useEffect(() => {
     setPageMeta({
       title: 'AI API Savings Calculator · Gathos vs Everyone Else',
@@ -53,8 +54,8 @@ export default function SavingsCalculator() {
     })
     setJsonLd('gathos-calc-app-ld', softwareApplicationLd({ description: 'AI API savings calculator', url }))
     setJsonLd('gathos-calc-bc-ld', breadcrumbLd([
-      { name: 'Home', url: 'https://gathos.com' },
-      { name: 'Tools', url: 'https://gathos.com/tools' },
+      { name: 'Home', url: (SITE_URL) },
+      { name: 'Tools', url: (SITE_URL + "/tools") },
       { name: 'Savings calculator', url },
     ]))
     return () => {
@@ -299,7 +300,7 @@ export default function SavingsCalculator() {
           </p>
           <div className="flex items-center justify-center gap-3 flex-wrap">
             <a
-              href="https://dashboard.gathos.live/login/"
+              href={(DASHBOARD_URL + "/login/")}
               className="inline-flex items-center gap-1.5 h-11 px-6 rounded-pill bg-lavender text-black border-2 border-black/90 font-semibold clay-hover clay-hover-bold"
             >
               Start free

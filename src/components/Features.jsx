@@ -1,3 +1,4 @@
+import { API_URL } from '../lib/urls.js'
 import { useRef, useEffect, useState } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
@@ -16,7 +17,7 @@ const CODE_SAMPLES = {
 
 # Generate an image. No credits. No meter.
 r = requests.post(
-  "https://gathos.com/api/v1/image-generation",
+  "${API_URL}/api/v1/image-generation",
   headers={"Authorization": f"Bearer {api_key}"},
   json={
     "prompt": "Neon-lit Tokyo alley at midnight",
@@ -29,7 +30,7 @@ job_id = r.json()["job_id"]`,
 
 # Creator image-to-image. Upload source image to R2 first.
 r = requests.post(
-  "https://gathos.com/api/image2image",
+  "${API_URL}/api/image2image",
   headers={"X-API-Key": i2i_key},
   json={
     "prompt": "Change the carrier color to dark blue only",
@@ -45,7 +46,7 @@ job_id = r.json()["job_id"]`,
 
 # TTS with zero-shot voice cloning.
 r = requests.post(
-  "https://gathos.com/api/v1/tts",
+  "${API_URL}/api/v1/tts",
   headers={"Authorization": f"Bearer {tts_key}"},
   json={
     "text": "Welcome back to the channel.",
@@ -57,7 +58,7 @@ r = requests.post(
 
 # Creator: text + image → video with synced audio.
 r = requests.post(
-  "https://gathos.com/api/v1/video-generation",
+  "${API_URL}/api/v1/video-generation",
   headers={"Authorization": f"Bearer {creator_key}"},
   json={
     "run_id": "campaign-2026-08-06",
@@ -271,7 +272,7 @@ function CodeExample() {
 {'\n'}
 response = requests.<span className="syn-fn">post</span>(
 {'\n    '}
-<span className="syn-str">"https://gathos.com/api/v1/image-generation"</span>,
+<span className="syn-str">"{API_URL}/api/v1/image-generation"</span>,
 {'\n    '}
 headers={'{'}<span className="syn-str">"Authorization"</span>: <span className="syn-str">f"Bearer </span><span className="syn-var">{'{api_key}'}</span><span className="syn-str">"</span>{'}'},
 {'\n    '}
@@ -295,7 +296,7 @@ job_id = response.<span className="syn-fn">json</span>()[<span className="syn-st
 {'\n'}
 video = requests.<span className="syn-fn">post</span>(
 {'\n    '}
-<span className="syn-str">"https://gathos.com/api/v1/video-generation"</span>,
+<span className="syn-str">"{API_URL}/api/v1/video-generation"</span>,
 {'\n    '}
 headers={'{'}<span className="syn-str">"Authorization"</span>: <span className="syn-str">f"Bearer </span><span className="syn-var">{'{creator_key}'}</span><span className="syn-str">"</span>{'}'},
 {'\n    '}

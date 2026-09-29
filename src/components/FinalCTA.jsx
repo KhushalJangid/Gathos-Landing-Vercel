@@ -1,3 +1,4 @@
+import { DASHBOARD_URL } from '../lib/urls.js'
 import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
@@ -94,7 +95,7 @@ export default function FinalCTA() {
           </p>
 
           <div className="cta-buttons flex flex-wrap items-center justify-center gap-4">
-            <a href="https://dashboard.gathos.live/login/" data-cursor="magnet" className="clay-hover clay-hover-bold inline-flex h-12 items-center justify-center gap-1.5 rounded-pill bg-white px-7 text-[0.95rem] font-semibold text-black">
+            <a href={(DASHBOARD_URL + "/login/")} data-cursor="magnet" className="clay-hover clay-hover-bold inline-flex h-12 items-center justify-center gap-1.5 rounded-pill bg-white px-7 text-[0.95rem] font-semibold text-black">
               Start building - free
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
             </a>

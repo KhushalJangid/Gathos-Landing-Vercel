@@ -1,3 +1,4 @@
+import { API_URL, SITE_URL } from '../../lib/urls.js'
 // Agent-specific integration pages.
 //
 // These target a rising query: "best image API for [agent]". First-mover
@@ -15,7 +16,7 @@ export const agents = [
     metaDesc: 'Add image generation and voice cloning to Claude Code in one curl command. Pre-built skills for thumbnails, product shots, voiceover, and dubbing. Flat $18/month.',
     h1: 'Image generation and voice cloning for Claude Code.',
     summary: 'Claude Code is the fastest-growing agent for power users. Gathos is the unified image + TTS API that plugs into Claude Code with a single install command. This page shows the install, a sample session, and the pre-built skills most teams install first.',
-    installCommand: 'curl -sL https://gathos.com/install.sh | bash',
+    installCommand: ("curl -sL " + SITE_URL + "/install.sh | bash"),
     sampleSession: [
       { who: 'you', say: 'Generate a YouTube thumbnail for a video titled "72 hours to build an app". Orange background, big yellow "72 HOURS" text.' },
       { who: 'cc', say: 'I will use the Gathos image-gen skill. Calling /skills/youtube-thumbnails with width 1280, height 720, text-in-image enabled.' },
@@ -50,8 +51,8 @@ export const agents = [
       { slug: 'podcast-clip-factory', title: 'Podcast clip factory' },
     ],
     faqs: [
-      { q: 'How do I install Gathos into Claude Code?', a: 'One line of curl: `curl -sL https://gathos.com/install.sh | bash`. It writes the skill files into your Claude Code skills directory and asks you to paste your API key once. From then on, Claude Code knows about every Gathos skill.' },
-      { q: 'Do I need to know the Gathos API?', a: 'No. The skills abstract it. You ask Claude Code for "a thumbnail for this video title" and it picks the right skill, calls the right endpoint, and hands you the output. If you want to drop to raw API, the endpoints are at https://gathos.com/api/v1.' },
+      { q: 'How do I install Gathos into Claude Code?', a: ("One line of curl: `curl -sL " + SITE_URL + "/install.sh | bash`. It writes the skill files into your Claude Code skills directory and asks you to paste your API key once. From then on, Claude Code knows about every Gathos skill.") },
+      { q: 'Do I need to know the Gathos API?', a: ("No. The skills abstract it. You ask Claude Code for \"a thumbnail for this video title\" and it picks the right skill, calls the right endpoint, and hands you the output. If you want to drop to raw API, the endpoints are at " + API_URL + "/api/v1.") },
       { q: 'Can I write my own skills?', a: 'Yes. Gathos skills are plain markdown with a front-matter block and a "how to use the API" section. Copy an existing one as a template, change the job description, commit to your own repo.' },
       { q: 'What happens if I exceed my plan limit?', a: 'You get a 429 with a clear error message in your Claude Code terminal ("6-hour window limit reached. Resets in X minutes."). Nothing breaks silently. Your script can catch the 429 and back off.' },
       { q: 'Does Gathos work with Claude Code in the terminal and in the VSCode extension?', a: 'Both. The skills live in your user-level Claude Code config so they apply to every invocation.' },
@@ -67,7 +68,7 @@ export const agents = [
     metaDesc: 'Use Gathos image generation and voice cloning from Cursor. Ask the agent for a thumbnail or voiceover and it runs it. Flat $18/month, no per-call cost.',
     h1: 'Image generation and voice cloning in Cursor.',
     summary: 'Cursor is where millions of developers write code every day. Gathos plugs into Cursor as a set of agent-callable skills · you describe what you want in a chat message, Cursor runs the API, and the output lands in your project folder. Flat $18/month.',
-    installCommand: 'curl -sL https://gathos.com/install.sh | bash && echo "Restart Cursor"',
+    installCommand: ("curl -sL " + SITE_URL + "/install.sh | bash && echo \"Restart Cursor\""),
     sampleSession: [
       { who: 'you', say: 'I need 5 product shots for the water bottle SKU. Use the reference image in ./assets/hero.jpg. Output lifestyle, flatlay, kitchen, outdoor, and gym.' },
       { who: 'cursor', say: 'Running /skills/shopify-product-shots. 5 parallel calls to Gathos image-gen...' },
@@ -105,7 +106,7 @@ export const agents = [
       { q: 'How do I add Gathos skills to a Cursor project?', a: 'The install script writes skill files into `.cursor/rules/gathos/`. Cursor picks them up automatically. Commit the folder so teammates get the same setup.' },
       { q: 'Do I need a different API key per project?', a: 'You can. Common pattern is one key per environment (dev, staging, prod) and scope by the image vs TTS key type.' },
       { q: 'Does Cursor need to be on a specific version?', a: 'Any version from 2025 onward (when custom skills/rules were stabilized). We test on the current stable release.' },
-      { q: 'What if I want to use the Gathos API directly, without the skills?', a: 'The API is a plain REST endpoint at https://gathos.com/api/v1/image-generation and /api/v1/tts. Skills are convenience; they are not required.' },
+      { q: 'What if I want to use the Gathos API directly, without the skills?', a: ("The API is a plain REST endpoint at " + API_URL + "/api/v1/image-generation and /api/v1/tts. Skills are convenience; they are not required.") },
       { q: 'Can I use Gathos for generating assets at build time?', a: 'Yes. Many teams call Gathos from a Vite/Next build script to generate OG images or hero thumbnails at deploy time. The flat billing makes this pattern cheap.' },
     ],
   },
@@ -119,7 +120,7 @@ export const agents = [
     metaDesc: 'Plug Gathos image generation and voice cloning into Windsurf as Cascade Skills. One install, both APIs, flat $18/month. Built for Wave 13+ skill spec.',
     h1: 'Image generation and voice cloning, native to Windsurf.',
     summary: "Windsurf shipped Cascade Skills in Wave 13 (January 2026), and the spec is the same single-file markdown convention Anthropic and Cursor adopted. Gathos plugs in as a Cascade Skill so the agent can generate thumbnails, product shots, voiceover, and dubbed videos without you leaving the editor.",
-    installCommand: 'curl -sL https://gathos.com/install.sh | bash && echo "Reload Windsurf"',
+    installCommand: ("curl -sL " + SITE_URL + "/install.sh | bash && echo \"Reload Windsurf\""),
     sampleSession: [
       { who: 'you', say: 'I need 5 vertical reels from podcast-ep-12.mp3. Use my saved voice clone for the trailer narration. Style matches my channel template.' },
       { who: 'windsurf', say: 'Running Cascade Skill /skills/podcast-clip-factory. Pulling 12 highlights from the transcript, picking the top 5...' },
@@ -170,7 +171,7 @@ export const agents = [
     metaDesc: 'Add Gathos image generation and 600+ language TTS to Gemini CLI as native skills. Flat $18/month. Built for the Gemini CLI Skills spec.',
     h1: 'Image and voice generation, native to Gemini CLI.',
     summary: "Gemini CLI's Skills spec went GA in early 2026 · same single-file markdown convention Anthropic and Codeium adopted. Gathos installs as a Gemini CLI skill so the agent can generate images and voiceover from any terminal session.",
-    installCommand: 'curl -sL https://gathos.com/install.sh | bash',
+    installCommand: ("curl -sL " + SITE_URL + "/install.sh | bash"),
     sampleSession: [
       { who: 'you', say: 'gemini "Generate a Bauhaus-style poster for our launch event. Bold yellow background, the date \'May 18 2026\' rendered in clean typography, our logo in the bottom-left."' },
       { who: 'gemini-cli', say: 'Loading skill: /skills/event-poster (matched on intent).' },
@@ -222,7 +223,7 @@ export const agents = [
     metaDesc: 'Add Gathos image and voice APIs to Aider as terminal-callable tools. Generate assets without leaving the pair-programming session. Flat $18/month.',
     h1: 'Image and voice generation, called from inside Aider sessions.',
     summary: "Aider is a terminal-first pair programmer that has stayed lean and fast. It does not ship with image generation or TTS, and the popular pattern is to bolt those on as external commands. Gathos slots in as a Bash-callable tool so an Aider session can generate assets without leaving the terminal.",
-    installCommand: 'curl -sL https://gathos.com/install.sh | bash',
+    installCommand: ("curl -sL " + SITE_URL + "/install.sh | bash"),
     sampleSession: [
       { who: 'you', say: 'aider> i need an OG image for the new /pricing route. 1200×630, our brand colors, "Flat $18/month" headline.' },
       { who: 'aider', say: 'Got it. Running `gathos image-gen --width 1200 --height 630 --prompt "Cream background with matcha-green accents, bold serif text Flat dollar 18 slash month, minimalist Clay aesthetic"`...' },
@@ -272,7 +273,7 @@ export const agents = [
     metaDesc: 'Add Gathos image generation and voice cloning to GitHub Copilot via custom agents and MCP servers. Flat $18/month, one auth.',
     h1: 'Image and voice generation, plugged into GitHub Copilot.',
     summary: "GitHub Copilot supports custom agents and MCP servers in 2026, which means Gathos can be wired in as a callable tool inside any IDE that ships Copilot. The setup is one curl line and one config entry.",
-    installCommand: 'curl -sL https://gathos.com/install.sh | bash',
+    installCommand: ("curl -sL " + SITE_URL + "/install.sh | bash"),
     sampleSession: [
       { who: 'you', say: '@gathos generate a 1200x630 OG image for the new /pricing route, brand colors, headline "Flat $18/month".' },
       { who: 'copilot', say: 'Calling Gathos image-generation skill via the MCP server...' },
@@ -323,7 +324,7 @@ export const agents = [
     metaDesc: 'Wire Gathos image and TTS APIs into a custom ChatGPT GPT as Actions. Generate thumbnails, voiceovers, dubbed videos from inside ChatGPT. Flat $18/month.',
     h1: 'Image and voice generation, callable from a custom ChatGPT GPT.',
     summary: "Custom ChatGPT GPTs support Actions, which are HTTPS-callable tools the GPT can invoke during a conversation. Gathos exposes a clean OpenAPI schema so wiring it as an Action takes about ten minutes.",
-    installCommand: '# In your custom GPT > Configure > Actions > Import from URL\nhttps://gathos.com/openapi.json',
+    installCommand: ("# In your custom GPT > Configure > Actions > Import from URL\n" + API_URL + "/openapi.json"),
     sampleSession: [
       { who: 'you', say: 'Make me 5 vertical Reels from this podcast episode link, with my channel style.' },
       { who: 'chatgpt', say: 'Calling the gathos.podcast_clip_factory action...' },
@@ -335,7 +336,7 @@ export const agents = [
     whySections: [
       {
         t: 'OpenAPI schema means Actions setup is a paste',
-        d: 'Gathos publishes a standard OpenAPI schema at https://gathos.com/openapi.json. ChatGPT Actions imports directly from a URL, so wiring takes about ten minutes per GPT, not a custom integration project.',
+        d: ("Gathos publishes a standard OpenAPI schema at " + API_URL + "/openapi.json. ChatGPT Actions imports directly from a URL, so wiring takes about ten minutes per GPT, not a custom integration project."),
       },
       {
         t: 'API key per GPT means you can build product-specific assistants',
@@ -357,7 +358,7 @@ export const agents = [
       { slug: 'podcast-clip-factory', title: 'Podcast clip factory' },
     ],
     faqs: [
-      { q: 'How do I add Gathos as a ChatGPT Action?', a: 'In your Custom GPT > Configure > Actions > Import from URL > paste https://gathos.com/openapi.json. Then add your Gathos API key in the auth section. Done.' },
+      { q: 'How do I add Gathos as a ChatGPT Action?', a: ("In your Custom GPT > Configure > Actions > Import from URL > paste " + API_URL + "/openapi.json. Then add your Gathos API key in the auth section. Done.") },
       { q: 'Does this work with the free ChatGPT tier?', a: 'Custom GPTs require ChatGPT Plus or higher. Once on Plus, your custom GPTs can call any Action.' },
       { q: 'Can I share my Gathos GPT with other people?', a: 'Yes. Share the GPT link. Each user provides their own Gathos API key on first use, so you do not pay for their usage.' },
       { q: 'What about the GPT Store?', a: "Yes, you can publish a Gathos-powered GPT to the store. Many teams build niche GPTs (thumbnail generator, product shot factory) on top of Gathos and publish them." },
@@ -374,7 +375,7 @@ export const agents = [
     metaDesc: 'Add Gathos image generation and voice cloning to Continue.dev as custom slash commands and tools. Flat $18/month, one auth, MIT-licensed skills.',
     h1: 'Image and voice generation in Continue.dev sessions.',
     summary: "Continue is the open-source alternative to Cursor, focused on developer control and self-hosting. It supports custom slash commands and tools through a clean config. Gathos plugs in as a callable tool so the agent can generate assets from the same editor session.",
-    installCommand: 'curl -sL https://gathos.com/install.sh | bash',
+    installCommand: ("curl -sL " + SITE_URL + "/install.sh | bash"),
     sampleSession: [
       { who: 'you', say: '/gathos image OG card for the new pricing page, our brand colors, "Flat $18/month" headline' },
       { who: 'continue', say: 'Running Gathos image-gen skill with width=1200 height=630...' },

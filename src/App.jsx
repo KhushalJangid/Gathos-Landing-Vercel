@@ -1,3 +1,4 @@
+import { DASHBOARD_URL } from './lib/urls.js'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { lazy, Suspense, useEffect } from 'react'
 import Landing from './pages/Landing'
@@ -20,9 +21,9 @@ const NotFound   = lazy(() => import('./pages/NotFound'))
 
 function DashboardRedirect() {
   useEffect(() => {
-    window.location.replace('https://dashboard.gathos.live/login/')
+    window.location.replace((DASHBOARD_URL + "/login/"))
   }, [])
-  return <a href="https://dashboard.gathos.live/login/">Continue to Gathos</a>
+  return <a href={(DASHBOARD_URL + "/login/")}>Continue to Gathos</a>
 }
 
 export default function App() {

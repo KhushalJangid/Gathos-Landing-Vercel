@@ -1,3 +1,4 @@
+import { DASHBOARD_URL } from '../lib/urls.js'
 import { assetUrl } from '../lib/assets.js'
 import { useRef, useState, useEffect } from 'react'
 import { useGSAP } from '@gsap/react'
@@ -709,7 +710,7 @@ export default function ResultsShowcase() {
           </p>
           <div className="flex items-center gap-3 flex-wrap justify-center">
             <a
-              href="https://dashboard.gathos.live/login/"
+              href={(DASHBOARD_URL + "/login/")}
               className="inline-flex items-center gap-2 h-11 px-6 rounded-pill bg-black text-white text-[0.9rem] font-semibold hover:opacity-85 transition-opacity clay-hover"
             >
               Start free

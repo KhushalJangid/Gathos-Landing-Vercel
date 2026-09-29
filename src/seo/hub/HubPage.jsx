@@ -1,3 +1,4 @@
+import { SITE_URL } from '../../lib/urls.js'
 import { publicFetch } from '../../lib/public-api.js'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -145,7 +146,7 @@ const DYNAMIC_HUB_FETCHERS = {
 
 export default function HubPage({ kind }) {
   const cfg = HUB_CONFIGS[kind]
-  const url = `https://gathos.com${cfg.path}`
+  const url = `${SITE_URL}${cfg.path}`
 
   const [dynamicItems, setDynamicItems] = useState([])
   useEffect(() => {
@@ -165,7 +166,7 @@ export default function HubPage({ kind }) {
   useEffect(() => {
     setPageMeta({ title: cfg.title, description: cfg.desc, url })
     setJsonLd('gathos-hub-bc-ld', breadcrumbLd([
-      { name: 'Home', url: 'https://gathos.com' },
+      { name: 'Home', url: (SITE_URL) },
       { name: cfg.eyebrowLabel, url },
     ]))
     window.scrollTo({ top: 0, behavior: 'instant' })

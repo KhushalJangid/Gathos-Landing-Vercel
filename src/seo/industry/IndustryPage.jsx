@@ -1,3 +1,4 @@
+import { DASHBOARD_URL, SITE_URL } from '../../lib/urls.js'
 import { useEffect } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import Navbar from '../../components/Navbar'
@@ -15,15 +16,15 @@ import { industries, getIndustry } from './data.js'
 export default function IndustryPage() {
   const { slug } = useParams()
   const page = getIndustry(slug)
-  const url = page ? `https://gathos.com/industry/${page.slug}` : ''
+  const url = page ? `${SITE_URL}/industry/${page.slug}` : ''
 
   useEffect(() => {
     if (!page) return
     setPageMeta({ title: page.metaTitle, description: page.metaDesc, url })
     setJsonLd('gathos-ind-app-ld', softwareApplicationLd({ description: page.metaDesc, url }))
     setJsonLd('gathos-ind-bc-ld', breadcrumbLd([
-      { name: 'Home', url: 'https://gathos.com' },
-      { name: 'Industries', url: 'https://gathos.com/industry' },
+      { name: 'Home', url: (SITE_URL) },
+      { name: 'Industries', url: (SITE_URL + "/industry") },
       { name: page.industryName, url },
     ]))
     if (page.faqs?.length) setJsonLd('gathos-ind-faq-ld', faqLd(page.faqs))
@@ -57,7 +58,7 @@ export default function IndustryPage() {
 
           <div className="mt-7 flex items-center gap-3 flex-wrap">
             <a
-              href="https://dashboard.gathos.live/login/"
+              href={(DASHBOARD_URL + "/login/")}
               className="inline-flex items-center gap-1.5 h-11 px-6 rounded-pill bg-lavender text-black border-2 border-black/90 font-semibold clay-hover clay-hover-bold"
             >
               Start free trial
@@ -214,7 +215,7 @@ export default function IndustryPage() {
             Flat $18/month after the trial. Built for {page.industryName.toLowerCase()}.
           </p>
           <a
-            href="https://dashboard.gathos.live/login/"
+            href={(DASHBOARD_URL + "/login/")}
             className="inline-flex items-center gap-1.5 h-11 px-6 rounded-pill bg-lavender text-black border-2 border-black/90 font-semibold clay-hover clay-hover-bold"
           >
             Start free

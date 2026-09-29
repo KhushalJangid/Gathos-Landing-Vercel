@@ -1,3 +1,4 @@
+import { SITE_URL } from '../lib/urls.js'
 import { assetUrl } from '../lib/assets.js'
 import { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react'
@@ -7,7 +8,7 @@ import SectionHeader from './SectionHeader'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
-const INSTALL_CMD = 'curl -sL https://gathos.com/install.sh | bash'
+const INSTALL_CMD = ("curl -sL " + SITE_URL + "/install.sh | bash")
 
 const SESSION = [
   { type: 'cmd',  text: '$ gathos init --agent claude-code' },

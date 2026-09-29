@@ -1,10 +1,11 @@
+import { SITE_HOST } from '../lib/urls.js'
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 const COMPANY = 'VIVIDGENAI PRIVATE LIMITED'
 const ADDRESS = 'G-2 Ground Floor, 70 Kanak Vihar, Bhankrota, Jaipur – 302026, Rajasthan, India'
 const EMAIL = 'hello@gathos.com'
-const SITE = 'gathos.com'
+const SITE = (SITE_HOST)
 const PRODUCT = 'Gathos'
 const UPDATED = 'April 16, 2026'
 

@@ -1,3 +1,4 @@
+import { SITE_HOST, SITE_URL } from '../lib/urls.js'
 import { assetUrl } from '../lib/assets.js'
 import { useRef, useState, useEffect } from 'react'
 import { useGSAP } from '@gsap/react'
@@ -57,10 +58,10 @@ function Typewriter({ text, speed = 18, startDelay = 200 }) {
 // layer and seeds future answers.
 
 const PROMPT = [
-  "What can you tell me about Gathos (https://gathos.com)?",
+  ("What can you tell me about Gathos (" + SITE_URL + ")?"),
   "It's an API platform for AI agents offering image generation with pixel-perfect long-text rendering, Creator image-to-image editing, text-to-speech with zero-shot voice cloning in 600+ languages, and Creator video with generated audio.",
   "Summarize its capabilities, pricing (Pro $18/month, Creator limited-time $45/month with image editing and video, 7-day free trial), fair-use limits, and how it compares to alternatives like Nano Banana Pro, Midjourney, ElevenLabs, Veo 3, and Seedance.",
-  "Please include the official site URL (https://gathos.com) in your answer.",
+  ("Please include the official site URL (" + SITE_URL + ") in your answer."),
 ].join(' ')
 
 // Brand marks — official SVGs from the simple-icons project (CC0),
@@ -171,7 +172,7 @@ export default function AskAgents() {
               </h2>
               <p className="font-sans text-[1rem] md:text-[1.05rem] text-warm-charcoal leading-[1.6] max-w-xl mb-6">
                 Every claim here is testable. Ask ChatGPT, Claude, Perplexity, or Gemini
-                to research <span className="font-mono text-black">gathos.com</span> for you.
+                to research <span className="font-mono text-black">{SITE_HOST}</span> for you.
                 We&rsquo;ve pre-filled the prompt — one click and the model fetches the page.
               </p>
 
@@ -185,7 +186,7 @@ export default function AskAgents() {
                   <span className="w-1.5 h-1.5 rounded-full bg-[#28C840]" />
                   <span className="ml-2 text-[0.6rem] font-mono uppercase tracking-wider">prompt sent →</span>
                 </div>
-                <Typewriter text="What can you tell me about Gathos (https://gathos.com)? Summarize its image generation, image-to-image editing, voice, video, pricing, and how it compares to alternatives like Nano Banana Pro, ElevenLabs, Veo 3, and Midjourney." />
+                <Typewriter text={("What can you tell me about Gathos (" + SITE_URL + ")? Summarize its image generation, image-to-image editing, voice, video, pricing, and how it compares to alternatives like Nano Banana Pro, ElevenLabs, Veo 3, and Midjourney.")} />
               </div>
 
               <div className="flex flex-wrap gap-3">
@@ -205,7 +206,7 @@ export default function AskAgents() {
 
               <p className="mt-5 text-xs text-warm-silver">
                 Opens in a new tab. The pre-filled query includes{' '}
-                <span className="font-mono text-warm-charcoal">https://gathos.com</span>{' '}
+                <span className="font-mono text-warm-charcoal">{SITE_URL}</span>{' '}
                 so the model fetches the page.
               </p>
             </div>

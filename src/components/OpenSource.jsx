@@ -1,3 +1,4 @@
+import { DASHBOARD_URL } from '../lib/urls.js'
 import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
@@ -42,7 +43,7 @@ const badgeStyles = {
 // intentional, not abrupt.
 export default function OpenSource() {
   const sectionRef = useRef(null)
-  const ctaHref = 'https://dashboard.gathos.live/login/'
+  const ctaHref = (DASHBOARD_URL + "/login/")
 
   useGSAP(
     () => {

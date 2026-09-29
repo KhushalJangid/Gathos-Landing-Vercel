@@ -68,3 +68,16 @@ static files does not deploy these services. Both forms require an explicit
 `npm run check:assets` inventories the showcase media. CDN files do not need to
 exist locally; remote availability is checked separately from the build. The old
 `VITE_SHOWCASE_CDN_BASE_URL` setting is no longer used.
+
+## Public URLs
+
+Set `VITE_SITE_URL` to the landing origin and `VITE_DASHBOARD_URL` to the
+dashboard origin in `.env.local` or the build environment. Trailing slashes are
+normalized. Signup redirects append `/login/` to the dashboard origin.
+`VITE_API_BASE_URL` also controls the API and OpenAPI URLs shown in examples;
+when empty, examples use the configured site origin.
+
+These settings apply to React content, canonical and social URLs, JSON-LD,
+`index.html`, and served/built public text files (sitemap, robots, LLM files,
+skills, and installer). Rebuild after changing them. Email addresses and separate
+news, affiliate, and social subdomains are not derived from these settings.

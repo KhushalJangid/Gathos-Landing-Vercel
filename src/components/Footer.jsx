@@ -1,3 +1,4 @@
+import { DASHBOARD_URL } from '../lib/urls.js'
 // Footer columns. The "deep" cohort columns (Compare, Alternatives,
 // Industries, Tools) are sitewide internal links — every page on the
 // site funnels link equity into these via the footer, which is the
@@ -12,11 +13,11 @@ const columns = [
     title: 'Product',
     links: [
       { label: 'APIs', href: '/#apis' },
-      { label: 'Documentation', href: 'https://dashboard.gathos.live/docs/' },
+      { label: 'Documentation', href: (DASHBOARD_URL + "/docs/") },
       { label: 'Video API', href: '/skills/text-to-video-api' },
       { label: 'Skills', href: '/#skills' },
       { label: 'Pricing', href: '/#pricing' },
-      { label: 'Sign in', href: 'https://dashboard.gathos.live/login/' },
+      { label: 'Sign in', href: (DASHBOARD_URL + "/login/") },
     ],
   },
   {

@@ -1,3 +1,4 @@
+import { API_URL, SITE_URL } from '../lib/urls.js'
 import { assetUrl } from '../lib/assets.js'
 import { publicFetch } from '../lib/public-api.js'
 import { useEffect, useMemo, useState } from 'react'
@@ -55,18 +56,18 @@ export default function BlogPost() {
     setMeta('og:title', seoTitle, true)
     setMeta('og:description', metaDescription, true)
     setMeta('og:type', 'article', true)
-    setMeta('og:url', `https://gathos.com/blog/${post.slug}`, true)
+    setMeta('og:url', `${SITE_URL}/blog/${post.slug}`, true)
     setMeta('article:published_time', post.publishedAt, true)
     // Per-post OG card — server-rendered SVG with this post's title +
     // eyebrow. Massively better social CTR than the generic shared
     // /og-image.png. Cached at Cloudflare edge for 24h.
     const ogTitle = encodeURIComponent(stripTags(post.ogTitle || post.title))
     const ogEyebrow = encodeURIComponent(post.eyebrow || 'Gathos · Blog')
-    const ogImage = `https://gathos.com/og/og.svg?title=${ogTitle}&eyebrow=${ogEyebrow}`
+    const ogImage = `${API_URL}/og/og.svg?title=${ogTitle}&eyebrow=${ogEyebrow}`
     setMeta('og:image', ogImage, true)
     setMeta('twitter:card', 'summary_large_image')
     setMeta('twitter:image', ogImage)
-    setCanonical(`https://gathos.com/blog/${post.slug}`)
+    setCanonical(`${SITE_URL}/blog/${post.slug}`)
     setArticleJsonLd(post)
     if (post.faqs?.length) setFaqJsonLd(post.faqs)
     window.scrollTo({ top: 0, behavior: 'instant' })
@@ -241,7 +242,7 @@ function setArticleJsonLd(post) {
   // schema is what Google's E-E-A-T scoring + AI answer engines look for.
   const author = post.author
     ? (post.author.name && post.author.name.toLowerCase().includes('team')
-        ? { '@type': 'Organization', name: post.author.name, url: post.author.url || 'https://gathos.com' }
+        ? { '@type': 'Organization', name: post.author.name, url: post.author.url || (SITE_URL) }
         : {
             '@type': 'Person',
             name: post.author.name,
@@ -250,7 +251,7 @@ function setArticleJsonLd(post) {
             jobTitle: post.author.title,
             sameAs: post.author.twitter ? [`https://x.com/${post.author.twitter.replace(/^@/, '')}`] : undefined,
           })
-    : { '@type': 'Organization', name: 'Gathos', url: 'https://gathos.com' }
+    : { '@type': 'Organization', name: 'Gathos', url: (SITE_URL) }
   const data = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -265,7 +266,7 @@ function setArticleJsonLd(post) {
       logo: { '@type': 'ImageObject', url: 'https://assets.vividai.in/icon-512.png' },
     },
     image: 'https://assets.vividai.in/og-image.png',
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://gathos.com/blog/${post.slug}` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/blog/${post.slug}` },
     keywords: post.keywords || post.eyebrow,
   }
   const tag = document.createElement('script')

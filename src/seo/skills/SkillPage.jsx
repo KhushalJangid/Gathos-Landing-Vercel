@@ -1,3 +1,4 @@
+import { API_URL, DASHBOARD_URL, SITE_URL } from '../../lib/urls.js'
 import { publicFetch } from '../../lib/public-api.js'
 import { useEffect, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
@@ -38,7 +39,7 @@ export default function SkillPage() {
 
   const page = staticPage || dynamicPage
   const stillLoading = !staticPage && dynamicPage === undefined
-  const url = page ? `https://gathos.com/skills/${page.slug}` : ''
+  const url = page ? `${SITE_URL}/skills/${page.slug}` : ''
 
   useEffect(() => {
     if (!page) return
@@ -47,12 +48,12 @@ export default function SkillPage() {
     // what a LinkedIn / Twitter share preview should show.
     const ogTitle = encodeURIComponent(page.h1 || page.metaTitle || '')
     const ogEyebrow = encodeURIComponent(page.eyebrow || 'Gathos Skill')
-    const ogImage = `https://gathos.com/og/og.svg?title=${ogTitle}&eyebrow=${ogEyebrow}`
+    const ogImage = `${API_URL}/og/og.svg?title=${ogTitle}&eyebrow=${ogEyebrow}`
     setPageMeta({ title: page.metaTitle, description: page.metaDesc, url, image: ogImage })
     setJsonLd('gathos-skill-app-ld', softwareApplicationLd({ description: page.metaDesc, url }))
     setJsonLd('gathos-skill-bc-ld', breadcrumbLd([
-      { name: 'Home', url: 'https://gathos.com' },
-      { name: 'Skills', url: 'https://gathos.com/#skills' },
+      { name: 'Home', url: (SITE_URL) },
+      { name: 'Skills', url: (SITE_URL + "/#skills") },
       { name: page.h1.replace(/\.$/, ''), url },
     ]))
     if (page.faqs?.length) setJsonLd('gathos-skill-faq-ld', faqLd(page.faqs))
@@ -99,7 +100,7 @@ export default function SkillPage() {
 
           <div className="mt-7 flex items-center gap-3 flex-wrap">
             <a
-              href="https://dashboard.gathos.live/login/"
+              href={(DASHBOARD_URL + "/login/")}
               className="inline-flex items-center gap-1.5 h-11 px-6 rounded-pill bg-lavender text-black border-2 border-black/90 font-semibold clay-hover clay-hover-bold"
             >
               Start 7-day free trial
@@ -116,7 +117,7 @@ export default function SkillPage() {
           {/* Install command — repeat the skill's name as the install slug so
               Perplexity and ChatGPT citing this page include the command */}
           <div className="mt-6 font-mono text-[0.78rem] text-warm-silver">
-            curl -sL https://gathos.com/skills/{page.slug}.md
+            curl -sL {SITE_URL}/skills/{page.slug}.md
           </div>
         </div>
       </header>
@@ -292,7 +293,7 @@ export default function SkillPage() {
           </p>
           <div className="flex items-center justify-center gap-3 flex-wrap">
             <a
-              href="https://dashboard.gathos.live/login/"
+              href={(DASHBOARD_URL + "/login/")}
               className="inline-flex items-center gap-1.5 h-11 px-6 rounded-pill bg-lavender text-black border-2 border-black/90 font-semibold clay-hover clay-hover-bold"
             >
               Start free

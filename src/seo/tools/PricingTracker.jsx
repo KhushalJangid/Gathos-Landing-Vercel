@@ -1,3 +1,4 @@
+import { DASHBOARD_URL, SITE_HOST, SITE_URL } from '../../lib/urls.js'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../../components/Navbar'
@@ -45,8 +46,8 @@ const IMAGE_PROVIDERS = [
     price: '$18 / month flat',
     unit: 'unlimited',
     notes: 'Image + TTS bundled, 6-hour fair-use window',
-    sourceUrl: 'https://gathos.com/#pricing',
-    sourceLabel: 'gathos.com',
+    sourceUrl: (SITE_URL + "/#pricing"),
+    sourceLabel: (SITE_HOST),
     lastChanged: '2025-12-01',
   },
   {
@@ -138,8 +139,8 @@ const TTS_PROVIDERS = [
     price: '$18 / month flat',
     unit: 'unlimited, 600+ languages, voice cloning included',
     notes: 'Image + TTS bundled',
-    sourceUrl: 'https://gathos.com/#pricing',
-    sourceLabel: 'gathos.com',
+    sourceUrl: (SITE_URL + "/#pricing"),
+    sourceLabel: (SITE_HOST),
     lastChanged: '2025-12-01',
   },
   {
@@ -271,7 +272,7 @@ function PricingTable({ title, providers, kind }) {
 }
 
 export default function PricingTracker() {
-  const url = 'https://gathos.com/tools/ai-pricing-tracker'
+  const url = (SITE_URL + "/tools/ai-pricing-tracker")
   useEffect(() => {
     setPageMeta({
       title: 'AI API Pricing Tracker 2026: Image, TTS & Video Costs',
@@ -281,8 +282,8 @@ export default function PricingTracker() {
     setJsonLd('gathos-tracker-app-ld', softwareApplicationLd({ description: 'AI pricing tracker', url }))
     setJsonLd('gathos-tracker-faq-ld', faqLd(PRICING_FAQS))
     setJsonLd('gathos-tracker-bc-ld', breadcrumbLd([
-      { name: 'Home', url: 'https://gathos.com' },
-      { name: 'Tools', url: 'https://gathos.com/tools' },
+      { name: 'Home', url: (SITE_URL) },
+      { name: 'Tools', url: (SITE_URL + "/tools") },
       { name: 'AI pricing tracker', url },
     ]))
     return () => {
@@ -316,7 +317,7 @@ export default function PricingTracker() {
               Calculate your savings
             </Link>
             <a
-              href="https://dashboard.gathos.live/login/"
+              href={(DASHBOARD_URL + "/login/")}
               className="inline-flex items-center gap-1.5 h-11 px-6 rounded-pill bg-white text-black border-2 border-black/90 font-semibold clay-hover"
             >
               Try Gathos free
@@ -361,7 +362,7 @@ export default function PricingTracker() {
             Use Pro for image and TTS, then move to Creator when video belongs in the same API stack.
           </p>
           <a
-            href="https://dashboard.gathos.live/login/"
+            href={(DASHBOARD_URL + "/login/")}
             className="inline-flex items-center gap-1.5 h-11 px-6 rounded-pill bg-lavender text-black border-2 border-black/90 font-semibold clay-hover clay-hover-bold"
           >
             Start 7-day free trial

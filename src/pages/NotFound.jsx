@@ -1,3 +1,4 @@
+import { DASHBOARD_URL, SITE_URL } from '../lib/urls.js'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
@@ -21,7 +22,7 @@ export default function NotFound() {
     setPageMeta({
       title: 'Page not found · Gathos',
       description: 'The page you were looking for does not exist. Browse skills, comparisons, or start your 7-day free trial of Gathos.',
-      url: 'https://gathos.com/404',
+      url: (SITE_URL + "/404"),
     })
     let robots = document.head.querySelector('meta[name="robots"]')
     const prev = robots?.getAttribute('content') || null
@@ -48,7 +49,7 @@ export default function NotFound() {
   }, [])
 
   const popular = [
-    { label: 'Start 7-day free trial', href: 'https://dashboard.gathos.live/login/', accent: 'bg-lavender' },
+    { label: 'Start 7-day free trial', href: (DASHBOARD_URL + "/login/"), accent: 'bg-lavender' },
     { label: 'Gathos vs ElevenLabs', href: '/compare/gathos-vs-elevenlabs', accent: 'bg-white' },
     { label: 'Gathos vs Midjourney', href: '/compare/gathos-vs-midjourney-api', accent: 'bg-white' },
     { label: 'For Claude Code', href: '/for/claude-code', accent: 'bg-white' },

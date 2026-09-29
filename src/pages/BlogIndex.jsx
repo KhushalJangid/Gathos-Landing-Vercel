@@ -1,3 +1,4 @@
+import { SITE_URL } from '../lib/urls.js'
 import { publicFetch } from '../lib/public-api.js'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -52,8 +53,8 @@ export default function BlogIndex() {
     setMeta('og:title', 'Gathos · Blog', true)
     setMeta('og:description', 'Use cases and engineering notes from the team building agent-native image, TTS, and Creator video APIs.', true)
     setMeta('og:type', 'website', true)
-    setMeta('og:url', 'https://gathos.com/blog', true)
-    setCanonical('https://gathos.com/blog')
+    setMeta('og:url', (SITE_URL + "/blog"), true)
+    setCanonical((SITE_URL + "/blog"))
   }, [])
 
   return (

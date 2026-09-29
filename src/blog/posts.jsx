@@ -1,3 +1,4 @@
+import { SITE_URL } from '../lib/urls.js'
 // ─────────────────────────────────────────────────────────────────────────
 // Blog post catalog.
 //
@@ -1062,7 +1063,7 @@ const post_skills = {
         is no runtime, no daemon, no compiled artifact. The whole skill
         is the markdown file. Installation is one shell command:
       </P>
-      <Code>curl -sL https://gathos.com/skills/idea-to-presentation.md {`>`} ~/.claude/skills/idea-to-presentation.md</Code>
+      <Code>curl -sL {SITE_URL}/skills/idea-to-presentation.md {`>`} ~/.claude/skills/idea-to-presentation.md</Code>
 
       <H2>Where the convention came from</H2>
       <P>
@@ -2771,7 +2772,7 @@ const post_courseSlideEconomics = {
 const DEFAULT_AUTHOR = {
   name: 'The Gathos team',
   title: 'API platform for AI agents',
-  url: 'https://gathos.com',
+  url: (SITE_URL),
   image: 'https://assets.vividai.in/icon-512.png',
   twitter: '@Gathos_',
 }

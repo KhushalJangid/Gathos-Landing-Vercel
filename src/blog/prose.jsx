@@ -1,3 +1,4 @@
+import { DASHBOARD_URL, SITE_URL } from '../lib/urls.js'
 // Prose primitives for blog post bodies. Keeping them in one file means
 // every post inherits consistent typography (EB Garamond serif H2/H3,
 // Plus Jakarta body) without needing per-post Tailwind classes.
@@ -167,7 +168,7 @@ export function CalloutSkill({ name, description, slug }) {
           </p>
         </div>
         <Link
-          to="https://dashboard.gathos.live/login/"
+          to={(DASHBOARD_URL + "/login/")}
           className="flex-shrink-0 inline-flex items-center gap-1.5 h-9 px-4 rounded-pill bg-black text-white text-sm font-semibold whitespace-nowrap clay-hover"
         >
           Install
@@ -175,7 +176,7 @@ export function CalloutSkill({ name, description, slug }) {
         </Link>
       </div>
       <div className="mt-3 font-mono text-[0.7rem] text-warm-silver">
-        curl -sL https://gathos.com/skills/{slug}.md
+        curl -sL {SITE_URL}/skills/{slug}.md
       </div>
     </div>
   )
@@ -254,7 +255,7 @@ export function CTAFooter() {
         </p>
         <div className="flex items-center justify-center gap-3 flex-wrap">
           <a
-            href="https://dashboard.gathos.live/login/"
+            href={(DASHBOARD_URL + "/login/")}
             className="inline-flex items-center gap-1.5 h-11 px-6 rounded-pill bg-lavender text-black border-2 border-black/90 font-semibold clay-hover clay-hover-bold"
           >
             Start free

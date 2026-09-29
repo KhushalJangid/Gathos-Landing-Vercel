@@ -1,3 +1,4 @@
+import { DASHBOARD_URL } from '../lib/urls.js'
 import { publicFetch } from '../lib/public-api.js'
 import { useState } from 'react'
 import SectionHeader from './SectionHeader'
@@ -147,7 +148,7 @@ export default function Pricing() {
               </div>
 
               <button
-                href="https://dashboard.gathos.live/login/"
+                href={(DASHBOARD_URL + "/login/")}
                 className="w-full h-11 inline-flex items-center justify-center gap-1.5 rounded-pill bg-white border-2 border-black text-black text-[0.92rem] font-semibold clay-hover"
               >
                 Start free
@@ -211,14 +212,14 @@ export default function Pricing() {
 
               <div className="space-y-2">
                 <button
-                  href="https://dashboard.gathos.live/login/"
+                  href={(DASHBOARD_URL + "/login/")}
                   className="w-full h-12 inline-flex items-center justify-center gap-1.5 rounded-pill bg-matcha-300 text-matcha-800 text-[0.95rem] font-bold clay-hover"
                 >
                   Start Creator trial
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
                 </button>
                 <button
-                  href="https://dashboard.gathos.live/login/"
+                  href={(DASHBOARD_URL + "/login/")}
                   className="w-full h-10 inline-flex items-center justify-center rounded-pill border border-white/25 bg-white/10 text-white text-[0.86rem] font-semibold hover:bg-white/15 transition-colors"
                 >
                   Subscribe now — limited-time $45/mo

@@ -1,3 +1,4 @@
+import { SITE_URL } from '../../lib/urls.js'
 // Job-to-be-done skill pages.
 //
 // Each entry drives one page at /skills/{slug}. The shape is designed so
@@ -65,7 +66,7 @@ export const skills = [
       'Gathos runs a model that handles text-in-image natively. You describe the layout in a single sentence and it comes back with the words rendered correctly. No Photoshop step. No freelancer.',
     ],
     workflowSteps: [
-      { t: 'Install the skill', d: "Run `curl -sL https://gathos.com/skills/youtube-thumbnails.md` and paste the output into Claude Code, Cursor, or your agent of choice. That's the whole install." },
+      { t: 'Install the skill', d: ("Run `curl -sL " + SITE_URL + "/skills/youtube-thumbnails.md` and paste the output into Claude Code, Cursor, or your agent of choice. That's the whole install.") },
       { t: 'Describe the video', d: 'Give your agent the video title and one sentence of context. The skill turns that into a detailed prompt and calls the Gathos image API.' },
       { t: 'Get a thumbnail back in ~4 seconds', d: 'You get a 1280×720 PNG ready to upload. If you want variations, say "three versions with different color schemes" and the skill runs three calls.' },
       { t: 'Iterate in plain English', d: 'Ask for "bigger text", "different face", "move the logo up" — the agent rewrites the prompt and regenerates.' },

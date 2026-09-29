@@ -1,3 +1,4 @@
+import { DASHBOARD_URL, SITE_URL } from '../../lib/urls.js'
 import { useEffect } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import Navbar from '../../components/Navbar'
@@ -36,15 +37,15 @@ function itemListLd(page) {
 export default function AlternativesPage() {
   const { slug } = useParams()
   const page = getAlternatives(slug)
-  const url = page ? `https://gathos.com/alternatives/${page.slug}` : ''
+  const url = page ? `${SITE_URL}/alternatives/${page.slug}` : ''
 
   useEffect(() => {
     if (!page) return
     setPageMeta({ title: page.metaTitle, description: page.metaDesc, url })
     setJsonLd('gathos-alt-app-ld', softwareApplicationLd({ description: page.metaDesc, url }))
     setJsonLd('gathos-alt-bc-ld', breadcrumbLd([
-      { name: 'Home', url: 'https://gathos.com' },
-      { name: 'Alternatives', url: 'https://gathos.com/alternatives' },
+      { name: 'Home', url: (SITE_URL) },
+      { name: 'Alternatives', url: (SITE_URL + "/alternatives") },
       { name: page.competitor, url },
     ]))
     setJsonLd('gathos-alt-list-ld', itemListLd(page))
@@ -118,7 +119,7 @@ export default function AlternativesPage() {
                     )}
                     {isUs && (
                       <a
-                        href="https://dashboard.gathos.live/login/"
+                        href={(DASHBOARD_URL + "/login/")}
                         className="inline-flex items-center gap-1 h-9 px-4 rounded-pill bg-lavender text-black border-2 border-black/90 text-sm font-semibold clay-hover clay-hover-bold"
                       >
                         Try free
@@ -259,7 +260,7 @@ export default function AlternativesPage() {
           </p>
           <div className="flex items-center justify-center gap-3 flex-wrap">
             <a
-              href="https://dashboard.gathos.live/login/"
+              href={(DASHBOARD_URL + "/login/")}
               className="inline-flex items-center gap-1.5 h-11 px-6 rounded-pill bg-lavender text-black border-2 border-black/90 font-semibold clay-hover clay-hover-bold"
             >
               Start free

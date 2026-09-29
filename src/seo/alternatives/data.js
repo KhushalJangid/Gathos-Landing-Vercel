@@ -1,3 +1,4 @@
+import { SITE_URL } from '../../lib/urls.js'
 // "Best X alternative" listicle pages.
 //
 // Different intent from /compare/* pages · alternatives are higher-volume
@@ -32,7 +33,7 @@ export const alternatives = [
       {
         rank: 1,
         name: 'Gathos',
-        url: 'https://gathos.com',
+        url: (SITE_URL),
         bestFor: 'Multilingual teams, indie devs, agent workflows',
         pricing: '$18/month flat, unlimited',
         pros: [
@@ -200,7 +201,7 @@ export const alternatives = [
       {
         rank: 1,
         name: 'Gathos',
-        url: 'https://gathos.com',
+        url: (SITE_URL),
         bestFor: 'Developers, agent workflows, bulk generation',
         pricing: '$18/month flat, unlimited',
         pros: [
@@ -371,7 +372,7 @@ export const alternatives = [
       {
         rank: 1,
         name: 'Gathos',
-        url: 'https://gathos.com',
+        url: (SITE_URL),
         bestFor: 'Predictable monthly bill, agent workflows',
         pricing: '$18/month flat, unlimited',
         pros: [
@@ -503,7 +504,7 @@ export const alternatives = [
       {
         rank: 1,
         name: 'Gathos',
-        url: 'https://gathos.com',
+        url: (SITE_URL),
         bestFor: 'Bulk generation, predictable bills, agent workflows',
         pricing: '$18/month flat, unlimited',
         pros: [
@@ -636,7 +637,7 @@ export const alternatives = [
       {
         rank: 1,
         name: 'Gathos',
-        url: 'https://gathos.com',
+        url: (SITE_URL),
         bestFor: 'Multilingual content, agent workflows, predictable bills',
         pricing: '$18/month flat, unlimited',
         pros: [
@@ -769,7 +770,7 @@ export const alternatives = [
       {
         rank: 1,
         name: 'Gathos',
-        url: 'https://gathos.com',
+        url: (SITE_URL),
         bestFor: 'Developers building media features into their own product',
         pricing: '$18/month flat, unlimited',
         pros: [

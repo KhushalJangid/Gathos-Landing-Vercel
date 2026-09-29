@@ -1,3 +1,4 @@
+import { DASHBOARD_URL, SITE_URL } from '../../lib/urls.js'
 import { useEffect } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import Navbar from '../../components/Navbar'
@@ -15,15 +16,15 @@ import { languages, getLanguage } from './data.js'
 export default function VoicePage() {
   const { slug } = useParams()
   const page = getLanguage(slug)
-  const url = page ? `https://gathos.com/voice/${page.slug}` : ''
+  const url = page ? `${SITE_URL}/voice/${page.slug}` : ''
 
   useEffect(() => {
     if (!page) return
     setPageMeta({ title: page.metaTitle, description: page.metaDesc, url })
     setJsonLd('gathos-voice-app-ld', softwareApplicationLd({ description: page.metaDesc, url }))
     setJsonLd('gathos-voice-bc-ld', breadcrumbLd([
-      { name: 'Home', url: 'https://gathos.com' },
-      { name: 'Voices', url: 'https://gathos.com/voice' },
+      { name: 'Home', url: (SITE_URL) },
+      { name: 'Voices', url: (SITE_URL + "/voice") },
       { name: page.language, url },
     ]))
     if (page.faqs?.length) setJsonLd('gathos-voice-faq-ld', faqLd(page.faqs))
@@ -57,7 +58,7 @@ export default function VoicePage() {
 
           <div className="mt-7 flex items-center gap-3 flex-wrap">
             <a
-              href="https://dashboard.gathos.live/login/"
+              href={(DASHBOARD_URL + "/login/")}
               className="inline-flex items-center gap-1.5 h-11 px-6 rounded-pill bg-lavender text-black border-2 border-black/90 font-semibold clay-hover clay-hover-bold"
             >
               Start free trial
@@ -211,7 +212,7 @@ export default function VoicePage() {
             Clone your voice. Speak <span className="italic text-matcha-800">{page.language}</span> at native quality.
           </h2>
           <a
-            href="https://dashboard.gathos.live/login/"
+            href={(DASHBOARD_URL + "/login/")}
             className="inline-flex items-center gap-1.5 h-11 px-6 rounded-pill bg-lavender text-black border-2 border-black/90 font-semibold clay-hover clay-hover-bold"
           >
             Start 7-day free trial

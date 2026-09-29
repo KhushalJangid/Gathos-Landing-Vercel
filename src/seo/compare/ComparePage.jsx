@@ -1,3 +1,4 @@
+import { API_URL, DASHBOARD_URL, SITE_URL } from '../../lib/urls.js'
 import { publicFetch } from '../../lib/public-api.js'
 import { useEffect, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
@@ -39,7 +40,7 @@ export default function ComparePage() {
 
   const page = staticPage || dynamicPage
   const stillLoading = !staticPage && dynamicPage === undefined
-  const url = page ? `https://gathos.com/compare/${page.slug}` : ''
+  const url = page ? `${SITE_URL}/compare/${page.slug}` : ''
 
   useEffect(() => {
     if (!page) return
@@ -49,12 +50,12 @@ export default function ComparePage() {
     // generic Gathos OG card.
     const ogTitle = encodeURIComponent(`Gathos vs ${page.competitor}`)
     const ogEyebrow = encodeURIComponent(page.category || 'Comparison')
-    const ogImage = `https://gathos.com/og/og.svg?title=${ogTitle}&eyebrow=${ogEyebrow}`
+    const ogImage = `${API_URL}/og/og.svg?title=${ogTitle}&eyebrow=${ogEyebrow}`
     setPageMeta({ title: page.metaTitle, description: page.metaDesc, url, image: ogImage })
     setJsonLd('gathos-cmp-app-ld', softwareApplicationLd({ description: page.metaDesc, url }))
     setJsonLd('gathos-cmp-bc-ld', breadcrumbLd([
-      { name: 'Home', url: 'https://gathos.com' },
-      { name: 'Compare', url: 'https://gathos.com/compare' },
+      { name: 'Home', url: (SITE_URL) },
+      { name: 'Compare', url: (SITE_URL + "/compare") },
       { name: `Gathos vs ${page.competitor}`, url },
     ]))
     if (page.faqs?.length) setJsonLd('gathos-cmp-faq-ld', faqLd(page.faqs))
@@ -288,7 +289,7 @@ export default function ComparePage() {
           </p>
           <div className="flex items-center justify-center gap-3 flex-wrap">
             <a
-              href="https://dashboard.gathos.live/login/"
+              href={(DASHBOARD_URL + "/login/")}
               className="inline-flex items-center gap-1.5 h-11 px-6 rounded-pill bg-lavender text-black border-2 border-black/90 font-semibold clay-hover clay-hover-bold"
             >
               Start free

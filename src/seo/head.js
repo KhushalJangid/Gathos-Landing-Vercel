@@ -1,3 +1,4 @@
+import { SITE_URL } from '../lib/urls.js'
 // Shared runtime <head> injection for SEO pages.
 //
 // SPA + no SSR means Googlebot/Bingbot/OAI-SearchBot execute JS and read
@@ -72,7 +73,7 @@ export function setPageMeta({ title, description, url, image = 'https://assets.v
 // on skill/compare/agent pages so they inherit the product's rich result
 // eligibility. Keep offers synced with public pricing: Pro ($18) and
 // Creator ($45, adds video).
-export function softwareApplicationLd({ name = 'Gathos', description, url = 'https://gathos.com' } = {}) {
+export function softwareApplicationLd({ name = 'Gathos', description, url = (SITE_URL) } = {}) {
   return {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -110,7 +111,7 @@ export function softwareApplicationLd({ name = 'Gathos', description, url = 'htt
     publisher: {
       '@type': 'Organization',
       name: 'Gathos',
-      url: 'https://gathos.com',
+      url: (SITE_URL),
       logo: 'https://assets.vividai.in/icon-512.png',
     },
   }
@@ -149,7 +150,7 @@ export function articleLd({ title, description, url, datePublished, dateModified
     description,
     datePublished,
     dateModified: dateModified || datePublished,
-    author: { '@type': 'Organization', name: 'Gathos', url: 'https://gathos.com' },
+    author: { '@type': 'Organization', name: 'Gathos', url: (SITE_URL) },
     publisher: {
       '@type': 'Organization',
       name: 'Gathos',

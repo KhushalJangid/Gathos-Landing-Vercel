@@ -1,3 +1,4 @@
+import { DASHBOARD_HOST, DASHBOARD_URL, SITE_HOST } from '../lib/urls.js'
 import { publicFetch } from '../lib/public-api.js'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
@@ -29,7 +30,7 @@ export default function DataDeletion() {
   return (
     <PageShell title="User Data Deletion">
       <p className="text-warm-charcoal text-base leading-relaxed mb-8">
-        Gathos (gathos.com and social.gathos.com) lets you connect your
+        Gathos ({SITE_HOST} and social.gathos.com) lets you connect your
         Facebook Pages and Instagram Business accounts so that posts
         you create in our platform can be published on your behalf.
         This page explains exactly what data we store from those
@@ -76,7 +77,7 @@ export default function DataDeletion() {
       <section className="rounded-xl border border-oat bg-white p-6 mb-8">
         <h2 className="text-xl font-semibold mb-3">Option 3 — Delete your entire Gathos account</h2>
         <ol className="list-decimal list-inside space-y-2 text-warm-charcoal">
-          <li>Sign in at <a href="https://dashboard.gathos.live/" className="text-black underline">dashboard.gathos.live</a> or <a href="https://social.gathos.com" className="text-black underline">social.gathos.com</a></li>
+          <li>Sign in at <a href={(DASHBOARD_URL + "/")} className="text-black underline">{DASHBOARD_HOST}</a> or <a href="https://social.gathos.com" className="text-black underline">social.gathos.com</a></li>
           <li>Go to <strong>Settings → Account → Delete account</strong></li>
           <li>Or email <a href={`mailto:${EMAIL}`} className="text-black underline">{EMAIL}</a> from the address on your account</li>
         </ol>
